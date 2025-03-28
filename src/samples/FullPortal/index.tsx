@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-console */
 import { useEffect, useMemo, useState } from 'react';
+import LeftNavigation from '../../components/LeftNavigation'; // Import the LeftNavigation component
 import { useLocation, useNavigate } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { StyledEngineProvider } from '@mui/material/styles'; // Keeping only StyledEngineProvider
@@ -36,7 +37,7 @@ function RootComponent(props) {
 
 export default function FullPortal() {
   const [portalSelectionScreen, setPortalSelectionScreen] = useState(false);
-  const [defaultPortalName, setDefaultPortalName] = useState('');
+  const [defaultPortalName, setDefaultPortalName] = useState<string>('');
   const [availablePortals, setAvailablePortals] = useState<string[]>([]);
   const [rootComponentProps, setRootComponentProps] = useState<object | null>(null);
 
@@ -66,7 +67,7 @@ export default function FullPortal() {
     });
 
     const { appPortal: thePortal, excludePortals } = SdkConfigAccess.getSdkConfigServer();
-    const defaultPortal = PCore?.getEnvironmentInfo?.().getDefaultPortal?.();
+    const defaultPortal = PCore?.getEnvironmentInfo?.().getDefaultPortal?.() || '';
     const queryPortal = sessionStorage.getItem('rsdk_portalName');
 
     if (queryPortal) {
@@ -130,6 +131,7 @@ export default function FullPortal() {
     <InvalidPortal defaultPortal={defaultPortalName} portals={availablePortals} onSelect={loadSelectedPortal} />
   ) : (
     <div id='pega-root'>
+      <LeftNavigation /> {/* Add the LeftNavigation component */}
       <StyledEngineProvider injectFirst>
         <CssBaseline />
         {rootComponentProps && <RootComponent {...rootComponentProps} />}

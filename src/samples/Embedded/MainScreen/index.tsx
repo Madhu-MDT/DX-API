@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { useEffect, useMemo, useState } from 'react';
+import LeftNavigation from '../../../components/LeftNavigation'; // Adjusted the path to match the correct file structure
 import ChatWindow from './ChatWindow'; // Ensure ChatWindow is imported
 // import chatbotIcon from '../../../assets/icons/chatbot.svg'; // Importing the chatbot icon
 import { Typography } from '@mui/material';
@@ -146,32 +147,46 @@ export default function MainScreen(props: MainScreenProps) {
     const theBanner = (
       <div className={classes.embedMainScreen}>
         <div className={classes.embedBanner}>
-          <Typography variant='h3'>Where do you want to go?</Typography>
+          <Typography variant='h3' style={{ justifyContent: 'center', paddingLeft: '350px' }}>
+            Where do you want to go?
+          </Typography>
         </div>
       </div>
     );
 
     const theOptions = shoppingOptions.slice(0, 2).map((option, index) => {
-      return <ShoppingOptionCard key={option.level} {...shoppingOptions[index]} onClick={onShopNow} style={{ margin: '0 20px', padding: '5px' }} />;
+      return (
+        <ShoppingOptionCard key={option.level} {...shoppingOptions[index]} onClick={onShopNow} style={{ margin: '0px 20px', padding: '10px' }} />
+      );
     });
 
     return (
-      <div>
-        {theBanner}
-        <div className={classes.embedShoppingOptions}>{theOptions}</div>
-        <button
-          type='button'
-          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-          onClick={() => setShowChatWindow(prev => !prev)} // Toggle chat window
-        >
-          <img
-            src='../../../assets/img/chatbot.png' // Placeholder for chatbot icon
-            alt='Chatbot'
-            width={80}
-            height={80}
-            style={{ position: 'fixed', bottom: '150px', right: '40px' }}
-          />
-        </button>
+      <div style={{ display: 'flex' }}>
+        {' '}
+        {/* Wrap the main content in a flex container */}
+        <LeftNavigation /> {/* Add the LeftNavigation component */}
+        <div>
+          {theBanner}
+          <div
+            className={classes.embedShoppingOptions}
+            style={{ paddingLeft: '300px', paddingTop: '50px', display: 'flex', justifyContent: 'center', gap: '560px' }}
+          >
+            {theOptions}
+          </div>
+          <button
+            type='button'
+            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+            onClick={() => setShowChatWindow(prev => !prev)} // Toggle chat window
+          >
+            <img
+              src='../../../assets/img/chatbot.png' // Placeholder for chatbot icon
+              alt='Chatbot'
+              width={80}
+              height={80}
+              style={{ position: 'fixed', bottom: '150px', right: '40px' }}
+            />
+          </button>
+        </div>
       </div>
     );
   }
