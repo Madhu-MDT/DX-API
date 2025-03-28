@@ -9,7 +9,7 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(theme => ({
   drawer: {
-    width: 240
+    width: 280
   },
   toggleButton: {
     position: 'absolute',
@@ -32,6 +32,13 @@ const LeftNavigation = () => {
         {open ? <CloseIcon /> : <MenuIcon />}
       </IconButton>
       <Drawer anchor='left' open={open} onClose={toggleDrawer}>
+        <div>
+          <img
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3As1Nnt2YDGpIF74UJnl4CCoBy2wHP_p-sg&s'
+            alt='Company Logo'
+            style={{ width: '200px', height: 'auto', paddingTop: '50px', paddingLeft: '20px' }}
+          />
+        </div>
         <div className={classes.drawer}>
           <List>
             <ListItem button>
