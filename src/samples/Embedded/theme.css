@@ -1,0 +1,13 @@
+/* Light Theme */
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark Theme */
+.dark-theme {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+/* Additional styles for buttons and other elements can be added here */
