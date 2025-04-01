@@ -1,11 +1,29 @@
 const translations = {
   English: {
-    welcome: 'Welcome to Transavia',
-    copyright: 'Copyright 2009 – 2025 | Transavia All Rights Reserved | Privacy Policy'
+    Compensation: 'Compensation',
+    Dispute: 'Dispute',
+    Wheredoyouwanttogo: 'Where do you want to go?'
   },
   Spanish: {
-    welcome: 'Bienvenido a Transavia',
-    copyright: 'Copyright 2009 – 2025 | Transavia Todos los derechos reservados | Política de privacidad'
+    Compensation: 'Compensación',
+    Dispute: 'Disputa',
+    'Where do you want to go?': '¿Dónde quieres ir?'
+  },
+  French: {
+    Compensation: 'Indemnisation',
+    Dispute: 'Litige'
+  },
+  German: {
+    Compensation: 'Entschädigung',
+    Dispute: 'Streitigkeit'
+  },
+  Dutch: {
+    Compensation: 'Compensatie',
+    Dispute: 'Geschil'
+  },
+  Swedish: {
+    Compensation: 'Ersättning',
+    Dispute: 'Tvist'
   }
 };
 

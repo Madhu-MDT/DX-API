@@ -1,13 +1,7 @@
-import { Typography, Switch } from '@mui/material';
+import { Typography, Select, MenuItem } from '@mui/material'; // Import Select and MenuItem
+import translations from '../translations'; // Import translations
 import { useState } from 'react';
 import { makeStyles } from '@mui/styles';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlined';
-import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const useStyles = makeStyles(theme => ({
   embeddedHeader: {
@@ -71,15 +65,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header() {
   const classes = useStyles();
-  const [language, setLanguage] = useState('English');
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleToggle = () => {
-    setIsChecked(prev => !prev);
-  };
+  const [language, setLanguage] = useState('English'); // Default language
+  const [translatedLabels, setTranslatedLabels] = useState(translations[language]); // Initialize translated labels
 
   const handleLanguageChange = newLanguage => {
-    setLanguage(newLanguage);
+    setLanguage(newLanguage); // Update the selected language
+    setTranslatedLabels(translations[newLanguage]); // Update translated labels
   };
 
   return (
@@ -94,33 +85,19 @@ export default function Header() {
       <div className={classes.itemGroup}>
         <div className={classes.items}>
           <div className={classes.item}>
-            <Switch checked={isChecked} onChange={handleToggle} color='primary' icon={<Brightness4Icon />} checkedIcon={<Brightness7Icon />} />
-          </div>
-          <div className={classes.item}>
-            <LanguageOutlinedIcon className={classes.icon} />
-            {language}
-          </div>
-          <div className={classes.item} onClick={() => handleLanguageChange('English')}>
-            <FullscreenExitOutlinedIcon className={classes.icon} />
-          </div>
-          <div className={classes.item} onClick={() => handleLanguageChange('Spanish')}>
-            <NotificationsNoneOutlinedIcon className={classes.icon} />
-            <div className={classes.counter}>1</div>
-          </div>
-          <div className={classes.item}>
-            <ChatBubbleOutlineOutlinedIcon className={classes.icon} />
-            <div className={classes.counter}>5</div>
-          </div>
-          <div className={classes.item}>
-            <ListOutlinedIcon className={classes.icon} />
-          </div>
-          <div className='item'>
-            <img
-              src='https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500'
-              alt=''
-              className={classes.avatar}
-              style={{ cursor: 'pointer' }}
-            />
+            <Select
+              value={language}
+              onChange={e => handleLanguageChange(e.target.value)}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Select Language' }}
+            >
+              <MenuItem value='English'>English</MenuItem>
+              <MenuItem value='Spanish'>Spanish</MenuItem>
+              <MenuItem value='French'>French</MenuItem>
+              <MenuItem value='German'>German</MenuItem>
+              <MenuItem value='Dutch'>Dutch</MenuItem>
+              <MenuItem value='Swedish'>Swedish</MenuItem>
+            </Select>
           </div>
         </div>
       </div>

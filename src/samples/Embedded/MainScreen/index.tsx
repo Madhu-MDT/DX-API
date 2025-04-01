@@ -80,17 +80,6 @@ export default function MainScreen(props: MainScreenProps) {
   const [showResolution, setShowResolution] = useState(false);
   const [showTriplePlayOptions, setShowTriplePlayOptions] = useState(true);
 
-  const translations = {
-    en: {
-      welcome: 'Welcome to BlueRose Technologies',
-      infoText: 'We need to gather a little information about you.'
-    },
-    es: {
-      welcome: 'Bienvenido a BlueRose Technologies',
-      infoText: 'Necesitamos recopilar un poco de información sobre usted.'
-    }
-  };
-
   useEffect(() => {
     // Removed chat window close on navigation
     PCore.getPubSubUtils().subscribe(PCore.getConstants().PUB_SUB_EVENTS.EVENT_CANCEL, () => cancelAssignment(), 'cancelAssignment');
@@ -147,7 +136,7 @@ export default function MainScreen(props: MainScreenProps) {
     const theBanner = (
       <div className={classes.embedMainScreen}>
         <div className={classes.embedBanner}>
-          <Typography variant='h3' style={{ justifyContent: 'center', paddingLeft: '350px' }}>
+          <Typography variant='h3' style={{ paddingLeft: '200px', display: 'flex', justifyContent: 'center' }}>
             Where do you want to go?
           </Typography>
         </div>
@@ -169,7 +158,7 @@ export default function MainScreen(props: MainScreenProps) {
           {theBanner}
           <div
             className={classes.embedShoppingOptions}
-            style={{ paddingLeft: '300px', paddingTop: '50px', display: 'flex', justifyContent: 'center', gap: '560px' }}
+            style={{ paddingLeft: '280px', paddingTop: '10px', display: 'flex', justifyContent: 'center', gap: '250px' }}
           >
             {theOptions}
           </div>
@@ -211,7 +200,7 @@ export default function MainScreen(props: MainScreenProps) {
             <div className={classes.pegaPartText}> * - required fields</div>
           </div>
           <div className={classes.pegaPartAccompaniment}>
-            <div className={classes.pegaPartAccompanimentText}>{translations.en.infoText}</div>
+            <div className={classes.pegaPartAccompanimentText}>Accompaniment</div>
             <div>
               <img
                 style={{ boxShadow: '0px 4px 4px rgba(29, 31, 30, 0.5)' }}
