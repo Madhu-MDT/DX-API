@@ -183,7 +183,8 @@ export default function MainScreen(props: MainScreenProps) {
   return (
     <div
       style={{
-        backgroundImage: 'url("../../../assets/img/Main_BG.png")', // Add your HD image URL here
+        backgroundImage:
+          'url("https://i0.wp.com/backgroundabstract.com/wp-content/uploads/edd/2024/04/642-01-e1713790588392.jpg?resize=1000%2C750&ssl=1")', // Add your HD image URL here
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh' // Ensure it covers the full height
