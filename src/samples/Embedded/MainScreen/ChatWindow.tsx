@@ -18,14 +18,14 @@ const ChatWindow = () => {
 
     const fetchRetry = async (attempts: number): Promise<string> => {
       try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('https://api.netmind.ai/inference-api/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer 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` // Using the provided API key
+            Authorization: `Bearer e9d0da1398bb426585e5353e6e336e7f` // Using the provided API key
           },
           body: JSON.stringify({
-            model: 'gpt-3.5-turbo',
+            model: 'deepseek-ai/DeepSeek-R1',
             messages: [{ role: 'user', content: input }]
           })
         });
