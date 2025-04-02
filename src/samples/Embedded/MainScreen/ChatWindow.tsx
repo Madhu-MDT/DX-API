@@ -84,8 +84,19 @@ const ChatWindow = () => {
   }, [messages]);
 
   return (
-    <div>
-      <h2>Chat Window</h2>
+    <div
+      style={{
+        width: '20%',
+        height: '0%',
+        padding: '20px',
+        backgroundColor: '#baecc6',
+        position: 'absolute',
+        bottom: '240px',
+        right: '40px',
+        borderRadius: '5px'
+      }}
+    >
+      <h2 style={{ color: '#00d66c' }}>AI Boat</h2>
       <div>
         {loading && <div>Loading...</div>}
         {messages.map(message => (
